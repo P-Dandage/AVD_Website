@@ -1,0 +1,238 @@
+/* --- FOOTER STYLING --- */
+.footer-container {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding-top: 60px;
+  position: relative;
+}
+
+.footer-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.5fr 1.5fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Column 1: Brand & Socials */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo-container {
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.footer-logo-container img {
+  height: 50px;
+  width: 230px;
+  object-fit: contain;
+  background-color: white;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.footer-about-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.social-box {
+  width: 40px;
+  height: 40px;
+  background-color: #D31224; /* AVD Red */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.social-box:hover {
+  background-color: #b72025;
+}
+
+.social-box svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Columns 2 & 3: Navigation Links */
+.footer-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-link {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #D31224;
+}
+
+/* Column 4: Contact Info */
+.footer-contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #e5e5e5;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.contact-text strong {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contact-text a {
+  color: #e5e5e5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-text a:hover {
+  color: #D31224;
+}
+
+/* Branches Section */
+.footer-branches {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px 30px 24px;
+}
+
+.branches-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.branches-title svg {
+  width: 18px;
+  height: 18px;
+}
+
+.branches-list {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  letter-spacing: 0.5px;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  border-top: 1px solid #333333;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.footer-bottom-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #a3a3a3;
+  font-weight: 500;
+}
+
+/* Back to Top Button Styling */
+.back-to-top {
+  position: absolute;
+  right: 24px;
+  bottom: 15px;
+  width: 45px;
+  height: 45px;
+  background-color: #D31224;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-to-top:hover {
+  background-color: #b72025;
+  transform: translateY(-4px);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 3;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .footer-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .back-to-top {
+    display: none;
+  }
+}

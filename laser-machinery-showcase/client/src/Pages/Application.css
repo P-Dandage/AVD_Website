@@ -1,0 +1,231 @@
+/* --- CLEAN APPLICATION PAGE STYLING --- */
+.application-page {
+  background-color: #ffffff;
+  color: #222222;
+  font-family: inherit;
+}
+
+/* Header Banner (Kept from previous version) */
+.app-header-banner {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 120px 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner-content h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-content h1 span {
+  color: #D31224;
+}
+
+.banner-content p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+
+/* Intro Section */
+.app-intro-section {
+  padding: 60px 24px 40px 24px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.app-intro-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D31224;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.app-intro-container h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #000000;
+  margin: 0;
+}
+
+/* --- CLEAN GRID LAYOUT --- */
+.app-grid-section {
+  padding: 40px 24px 100px 24px;
+  background-color: #ffffff;
+}
+
+.app-grid-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: grid;
+  /* Creates 3 columns on large screens, 1 on small */
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 30px;
+}
+
+.industry-card-Clean {
+  position: relative;
+  height: 330px; /* Slightly shorter than previous */
+  border-radius: 8px;
+  overflow: hidden; /* Crucial for the zoom effect */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+/* Background image layer used for animation */
+.industry-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Smooth focus in/out transition */
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Hover Effect: Zoom and Focus Pan */
+.industry-card-Clean:hover .industry-card-bg {
+  transform: scale(1.1) translate(5px, 5px);
+}
+
+/* Dark gradient overlay at bottom for text readability */
+.industry-overlay-Clean {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+.industry-card-Clean:hover .industry-overlay-Clean {
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+}
+
+/* Title Text Container (Bottom) */
+.industry-content-Clean {
+  position: relative;
+  z-index: 2;
+  padding: 25px;
+  width: 100%;
+}
+
+.industry-content-Clean h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- UPDATED CTA SECTION --- */
+.app-cta-section {
+  padding: 90px 24px;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  text-align: center;
+  color: #ffffff;
+}
+
+.app-cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.app-cta-content h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.app-cta-content p {
+  font-size: 1.05rem;
+  color: #cccccc;
+  margin-bottom: 30px;
+}
+
+.cta-buttons-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.app-cta-content .card-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+/* Red "Get a Quote" button */
+.app-cta-content .solid-btn {
+  background-color: #D31224;
+  color: #ffffff;
+  border: 2px solid #D31224;
+}
+
+.app-cta-content .solid-btn:hover {
+  background-color: #b72025;
+  border-color: #b72025;
+  transform: scale(1.05);
+}
+
+/* White outline "Connect With Us" button */
+.app-cta-content .outline-btn-light {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.app-cta-content .outline-btn-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .cta-buttons-group {
+    flex-direction: column;
+  }
+}
