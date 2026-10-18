@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SuccessModal from '../components/SuccessModal';
 import './Contact.css';
+import { siteConfig } from '../siteConfig';
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -93,7 +94,7 @@ export default function Contact() {
               <div className="contact-icon-box">📍</div>
               <div>
                 <h3>Address</h3>
-                <p>A-503/504, Empire Business Hub, Nr. Shukan Mall, Science City Road, Sola, Ahmedabad 380060, Gujarat.</p>
+                <p>{siteConfig.address}</p>
               </div>
             </div>
 
@@ -101,7 +102,7 @@ export default function Contact() {
               <div className="contact-icon-box">🏭</div>
               <div>
                 <h3>Factory Address</h3>
-                <p>Block No. 2100, Paiki-2, Beside Umiya Industries Estate, Santej, Ahmedabad-382721, Gujarat, India</p>
+                <p>{siteConfig.factoryAddress}</p>
               </div>
             </div>
 
@@ -109,7 +110,7 @@ export default function Contact() {
               <div className="contact-icon-box">📞</div>
               <div>
                 <h3>Phone</h3>
-                <p>+91 63526 44186</p>
+                <p>{siteConfig.phone}</p>
               </div>
             </div>
 
@@ -117,13 +118,13 @@ export default function Contact() {
               <div className="contact-icon-box">✉️</div>
               <div>
                 <h3>Email</h3>
-                <p>inquiry1@adkgeng.com</p>
+                <p>{siteConfig.email}</p>
               </div>
             </div>
 
             <div className="branches-tag-box">
               <strong>Our Branches:</strong>
-              <span>Nagpur | Pune | Kolhapur | Bhopal | Jaipur | Kolkata | Hubli</span>
+              <span>Pune </span>
             </div>
           </div>
 
@@ -173,18 +174,18 @@ export default function Contact() {
         <div className="contact-departments-grid">
           <div className="dept-card">
             <h4>For Inquiry</h4>
-            <div className="dept-info-row"><span>📞</span> +91 63526 44186</div>
-            <div className="dept-info-row"><span>✉️</span> inquiry1@adkgeng.com</div>
+            <div className="dept-info-row"><span>📞</span> {siteConfig.phone}</div>
+            <div className="dept-info-row"><span>✉️</span> {siteConfig.email}</div>
           </div>
           <div className="dept-card">
             <h4>For Service</h4>
-            <div className="dept-info-row"><span>📞</span> +91 95100 41629<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+91 79845 92853</div>
-            <div className="dept-info-row"><span>✉️</span> service@adkgeng.com</div>
+            <div className="dept-info-row"><span>📞</span> {siteConfig.phone}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.servicePhones[1]}</div>
+            <div className="dept-info-row"><span>✉️</span> {siteConfig.serviceEmail}</div>
           </div>
           <div className="dept-card">
             <h4>For Spares</h4>
-            <div className="dept-info-row"><span>📞</span> +91 92130 14914</div>
-            <div className="dept-info-row"><span>✉️</span> spares.adk@gmail.com</div>
+            <div className="dept-info-row"><span>📞</span> {siteConfig.sparesPhone}</div>
+            <div className="dept-info-row"><span>✉️</span> {siteConfig.sparesEmail}</div>
           </div>
         </div>
 

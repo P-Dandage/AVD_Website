@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ToStrip from './components/ToStrip';
 import ScrollToTop from './components/ScrollToTop'; // Double check your import path!
-
+import FloatingContact from './components/FloatingContact';
 // Import Pages
 import Home from './Pages/Home';
 import Products from './Pages/Products';
@@ -26,6 +26,7 @@ export default function App() {
       <Navbar />
 
       <main className="flex-grow flex flex-col">
+        <FloatingContact />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

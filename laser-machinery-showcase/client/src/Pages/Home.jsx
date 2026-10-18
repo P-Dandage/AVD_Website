@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import QuoteModal from '../components/QuoteModal';
 import { productsData } from '../components/Products';
 
 import './Home.css';
@@ -7,6 +8,7 @@ import './Home.css';
 export default function Home() {
   // --- Simple Slideshow Logic ---
   const [currentSlide, setCurrentSlide] = useState(0);
+    const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   // Your machine images
   const slideImages = [
@@ -172,8 +174,8 @@ export default function Home() {
                     <h3 className="full-card-title">{product.name}</h3>
                     
                     <div className="full-card-actions">
-                      <Link to="/products" className="card-btn outline-btn-light">Read More</Link>
-                      <Link to={`/contact?inquiry=${product.name}`} className="card-btn solid-btn">Get Quote</Link>
+                      <Link to={`/products/${product.id}`} className="card-btn outline-btn-light">Read More</Link>
+                      <Link to="#" className="card-btn solid-btn" onClick={(e) => { e.preventDefault(); setIsQuoteOpen(true); }}>Get Quote</Link>
                     </div>
                   </div>
                 </div>
@@ -285,7 +287,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+  <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </div>
+    
   );
 }

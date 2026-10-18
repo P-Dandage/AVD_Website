@@ -1,0 +1,115 @@
+.floating-contact {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 900;
+}
+
+/* Base button styles */
+.fc-btn {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  text-decoration: none;
+  box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Toggle Arrow Button */
+.fc-toggle {
+  width: 52px;
+  justify-content: center;
+  background: #C53030; /* Red */
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.fc-toggle .arrow-icon {
+  transition: transform 0.35s ease;
+}
+
+.fc-toggle.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Expanded items wrapper */
+.fc-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+/* Expanded state when container is open */
+.floating-contact.expanded .fc-items-container {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* Individual options */
+.fc-item {
+  width: 52px; /* Collapsed width showing only icon */
+  white-space: nowrap;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Expand width on hover of the whole widget or when container is open */
+.floating-contact:hover .fc-item,
+.floating-contact.expanded .fc-item {
+  width: 175px; /* Expands to show text label */
+}
+
+.fc-icon-box {
+  min-width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.fc-label {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
+  padding-right: 16px;
+}
+
+.floating-contact:hover .fc-label,
+.floating-contact.expanded .fc-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Theme Colors matching reference image */
+.fc-inquiry {
+  background: #1A202C; /* Dark Charcoal */
+}
+
+.fc-email {
+  background: #C53030; /* Red */
+}
+
+.fc-phone {
+  background: #1A202C; /* Dark Charcoal */
+}
+
+.fc-wa {
+  background: #25D366; /* WhatsApp Green */
+}

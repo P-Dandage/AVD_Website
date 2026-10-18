@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { catalogData } from '../components/productsCatalog';
 import './Products.css';
 
 export default function Products() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const selectedCategory = searchParams.get('category');
   const selectedMachine = searchParams.get('machine');
 
