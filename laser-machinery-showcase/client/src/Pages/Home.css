@@ -627,3 +627,17 @@
 @media (max-width: 480px) {
   .simple-card-actions { flex-direction: column; }
 }
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;   /* change to your image ratio, e.g. 16 / 10 */
+  }
+
+  .slide-bg { background-position: center; }
+
+  .slider-dots { bottom: 8px; gap: 10px; }
+  .dot { width: 10px; height: 10px; border: none; padding: 0; position: relative; }
+  .dot::before { content: ''; position: absolute; inset: -10px; } /* bigger tap area */
+}
