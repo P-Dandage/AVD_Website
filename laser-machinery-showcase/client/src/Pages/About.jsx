@@ -1,145 +1,265 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import './About.css';
 
+const reasons = [
+  { icon: 'check', title: 'Conception To Finalization', desc: 'We recommend the machine your material and volume need, not the most expensive model.' },
+  { icon: 'award', title: 'Customised Solutions', desc: 'Reliable equipment chosen for the shop floor, tailored to your exact manufacturing needs.' },
+  { icon: 'zap', title: 'Advanced Technology', desc: 'Cutting-edge automation and user-friendly controls so your operators are productive quickly.' },
+  { icon: 'tool', title: 'One-stop Shop', desc: 'From commissioning and hands-on training to genuine spares, we handle everything.' }
+];
+
+const steps = [
+  { title: 'Understand Your Job', desc: 'We study your materials, thickness, volumes, and budget before suggesting anything.' },
+  { title: 'Get Instant Quote', desc: 'A clear, transparent recommendation and quote with the right machine for the work.' },
+  { title: 'Install & Train', desc: 'Our engineers commission the machine and train your operators on site.' },
+  { title: 'Support For Life', desc: 'Scheduled maintenance, remote help, and genuine spares for as long as you run it.' }
+];
+
+const industries = [
+  'Automotive Components', 'Construction & PEB', 'Elevators & Lifts', 
+  'Kitchen Equipment', 'HVAC & Ducting', 'Electrical Panels', 
+  'Agricultural Equipment', 'General Fabrication'
+];
+
+const supportServices = [
+  { title: "Installation & Training", desc: "Experienced engineers ensure seamless setup while providing comprehensive training." },
+  { title: "Ongoing Maintenance", desc: "Routine inspections and calibrations to keep equipment running at peak performance." },
+  { title: "Dedicated Tech Support", desc: "Prompt troubleshooting via phone and remote diagnostics, 24/7." },
+  { title: "Genuine Spare Parts", desc: "A comprehensive inventory of genuine spares ready for quick dispatch." }
+];
+
+const ease = [0.22, 1, 0.36, 1];
+
+const iconPaths = {
+  check: (<><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><path d="M22 4L12 14.01l-3-3" /></>),
+  award: (<><circle cx="12" cy="8" r="7" /><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" /></>),
+  zap: (<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />),
+  tool: (<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />),
+};
+
+function Icon({ name }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {iconPaths[name]}
+    </svg>
+  );
+}
+
+function Reveal({ children, delay = 0, y = 30, className, once = true }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: once, amount: 0.2 }}
+      transition={{ duration: reduce ? 0 : 0.8, delay: reduce ? 0 : delay, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function About() {
-  const milestones = [
-    { year: "2015", title: "Company Foundation", desc: "Established with the vision to provide high-precision, budget-friendly sheet metal solutions with dedicated service support." },
-    { year: "2017", title: "Market Expansion", desc: "Achieved widespread market acceptance, expanding our technical sales & service networks across major industrial hubs." },
-    { year: "2019", title: "Advanced Machinery Launch", desc: "Introduced high-performance CNC Press Brake and PEB machinery lines to cater to heavy manufacturing sectors." },
-    { year: "2021", title: "Enterprise & Government Trust", desc: "Successfully completed installations for elite corporate enterprises and premier government research sectors." },
-    { year: "2023", title: "Large-Scale Innovation", desc: "Delivered ultra-large bed size fiber laser cutting systems, crossing 550+ successful nationwide installations." },
-    { year: "2026", title: "Next-Gen Engineering", desc: "Leading the industry with 800+ total installations, cutting-edge automation, and lifelong customer partnerships." }
-  ];
-
-  const supportServices = [
-    { title: "Installation & Training", desc: "Experienced engineers ensure seamless setup while providing comprehensive training programs to maximize your team's operational productivity." },
-    { title: "Ongoing Maintenance", desc: "Routine inspections, scheduled preventative servicing, and expert calibrations to keep your equipment running at peak performance without downtime." },
-    { title: "Dedicated Technical Support", desc: "Prompt, knowledgeable troubleshooting assistance via phone and remote diagnostics to keep your plant operations running smoothly." },
-    { title: "Genuine Spare Parts", desc: "A comprehensive inventory of genuine spares and consumables ready for quick turnaround dispatch to minimize workflow disruptions." }
-  ];
-
   return (
     <div className="about-page">
       
-      {/* --- PAGE HEADER BANNER --- */}
-      <section className="about-header-banner">
-        <div className="banner-overlay"></div>
-        <div className="banner-content">
-          <h1>About <span>AVD Machine Tools</span></h1>
-          <p>Pioneering innovation in precision engineering to shape the future of manufacturing.</p>
-          <div className="breadcrumb">
-            <Link to="/">Home</Link> / <span>About Us</span>
+      {/* 1. DARK IMAGE BACKGROUND HEADER BANNER */}
+      <section className="about-hero-banner">
+        <div className="hero-overlay"></div>
+        <Reveal className="hero-content" y={20}>
+          <h1>About Us</h1>
+        </Reveal>
+      </section>
+
+      {/* 2. COMPANY PROFILE */}
+      <section className="clean-intro-section">
+        <div className="clean-intro-container">
+          
+          <Reveal className="clean-intro-header">
+            <span className="red-subtitle">Company Profile</span>
+            <h2>Excellence in Sheet Metal Solutions & Engineering</h2>
+          </Reveal>
+          
+          <Reveal className="clean-intro-body" delay={0.2}>
+            <p className="lead-text">
+              AVD MACHINE TOOLS is built on a foundation of providing superior customer support and service for over 16 years.
+            </p>
+            <p className="secondary-text">
+              We specialize in delivering cutting-edge solutions ranging from CNC Fiber Laser Cutting and Plasma Systems to Press Brakes. Our core philosophy centers on building value through trust, superior technical support, and user-friendly automated systems. With our expertise, go from idea to production faster and with less cost than ever before.
+            </p>
+            
+            <div className="clean-stats-row">
+              <div className="stat-item">
+                <h3>800+</h3>
+                <span>Installations</span>
+              </div>
+              <div className="stat-item">
+                <h3>16+</h3>
+                <span>Years Exp.</span>
+              </div>
+              <div className="stat-item">
+                <h3>100%</h3>
+                <span>Assurance</span>
+              </div>
+            </div>
+          </Reveal>
+          
+        </div>
+      </section>
+
+      {/* 3. WHY US? */}
+      <section className="abt-section abt-soft">
+        <div className="abt-container">
+          <Reveal className="abt-head">
+            <h2 className="abt-h2">Why Us?</h2>
+            <p>Reliable infrastructure. Quality reports with each consignment. On-time delivery.</p>
+          </Reveal>
+
+          <div className="abt-why-grid">
+            {reasons.map((r, i) => (
+              <Reveal key={r.title} delay={(i % 4) * 0.1}>
+                <article className="abt-why">
+                  <span className="abt-icon"><Icon name={r.icon} /></span>
+                  <h3>{r.title}</h3>
+                  <p>{r.desc}</p>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- WHO WE ARE SECTION --- */}
-      <section className="about-intro-section">
-        <div className="about-intro-container">
-          <div className="about-intro-text">
-            <span className="section-subtitle">Who We Are</span>
-            <h2>Excellence in Sheet Metal Solutions & Engineering</h2>
-            <p className="lead-text">
-              AVD MACHINE TOOLS is built on a foundation of long-term business relationships, standardized industry solutions, and uncompromising equipment reliability. 
+      {/* 4. PROCESS / HOW WE WORK */}
+      <section className="abt-section">
+        <div className="abt-container">
+          <Reveal className="abt-head">
+            <h2 className="abt-h2">Ramp-Up Your Production Today</h2>
+            <p>A simple, streamlined process to get your factory floor moving.</p>
+          </Reveal>
+
+          <ol className="abt-steps">
+            {steps.map((s, i) => (
+              <li key={s.title}>
+                <Reveal delay={i * 0.1}>
+                  <div className="abt-step">
+                    <span className="abt-step-no">{i + 1}</span>
+                    <h3>{s.title}</h3>
+                    <p>{s.desc}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 5. FOUNDER'S DESK (COMPACT & TOP ALIGNED) */}
+      <section className="founder-fade-section">
+        <div className="founder-fade-container">
+          
+          <motion.div 
+            className="founder-img-wrapper"
+            initial={{ opacity: 0, scale: 1.15 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: ease }}
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" 
+              alt="Ravi Dandage - Founder" 
+              className="founder-fade-img" 
+            />
+            <div className="founder-simple-badge">
+              <h4>Ravi Dandage</h4>
+              <p>Founder & MD</p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="founder-fade-text"
+            initial={{ opacity: 0, scale: 1.05 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 1.2, delay: 0.1, ease: ease }}
+          >
+            <span className="red-subtitle">Leadership</span>
+            <h2>Forging Partnerships That Drive Industrial Growth</h2>
+            <div className="founder-clean-quote">
+              "We don't measure our success by the machines we sell, but by the operational downtime we prevent and the production efficiency we boost for our clients."
+            </div>
+            <p>
+              When AVD Machine Tools was established, the vision was simple yet ambitious: to bridge the gap between high-end industrial automation and accessibility for local manufacturers. 
             </p>
             <p>
-              Founded with over 16 years of collective engineering expertise in the cutting and heavy machinery sector, we specialize in delivering cutting-edge solutions ranging from CNC Fiber Laser Cutting and Plasma Systems to Press Brakes and PEB Machineries. Our core philosophy centers on building value through trust, superior technical support, and user-friendly automated systems.
+              Our foundation for success has been providing superior customer support and service. This level of service makes AVD a world-class organization and keeps customers coming back again and again.
             </p>
-            <div className="about-highlights-grid">
-              <div className="highlight-box">
-                <h3>800+</h3>
-                <p>Successful Installations</p>
-              </div>
-              <div className="highlight-box">
-                <h3>16+ Years</h3>
-                <p>Engineering Expertise</p>
-              </div>
-              <div className="highlight-box">
-                <h3>24/7</h3>
-                <p>Dedicated Support</p>
-              </div>
-            </div>
-          </div>
-          <div className="about-intro-img-wrapper">
-            <img src="/assets/Laser.png" alt="AVD Machine Tools Facility" className="about-main-img" />
-            <div className="experience-badge">
-              <span>Trusted</span>
-              <strong>Industry Leader</strong>
-            </div>
-          </div>
+          </motion.div>
+
         </div>
       </section>
 
-      {/* --- OUR MISSION & VISION --- */}
-      <section className="mission-vision-section">
-        <div className="mission-container">
-          <div className="mission-card">
-            <div className="mission-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            </div>
-            <h3>Our Mission</h3>
-            <p>To deliver error-free, time-bound solutions and qualitative machinery that exceed customer expectations, driving maximum plant productivity and unmatched return on investment.</p>
-          </div>
-          <div className="mission-card">
-            <div className="mission-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-            </div>
-            <h3>Our Vision</h3>
-            <p>To be the premier trendsetter in industrial cutting and sheet metal solution design across India, recognized for lifelong after-sales support and authentic business relationships.</p>
+      {/* 6. CAPABILITIES */}
+      <section className="abt-section abt-soft">
+        <div className="abt-container">
+          <Reveal className="abt-head">
+            <span className="red-subtitle">Capabilities</span>
+            <h2 className="abt-h2">Comprehensive Service Support</h2>
+            <p>We stand by our machinery with lifelong operational backing.</p>
+          </Reveal>
+
+          <div className="capabilities-grid">
+            {supportServices.map((srv, idx) => (
+              <Reveal key={idx} delay={idx * 0.1} className="capability-card">
+                <div className="cap-icon-header">
+                  <span className="cap-dot"></span>
+                  <h4>{srv.title}</h4>
+                </div>
+                <p>{srv.desc}</p>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- EXPEDITIONS TO SUCCESS (TIMELINE) --- */}
-      <section className="timeline-section">
-        <div className="section-title-wrapper">
-          <span className="section-subtitle">Our Journey</span>
-          <h2 className="line-heading-text">Expeditions To Success</h2>
-        </div>
-        <div className="timeline-container">
-          {milestones.map((item, index) => (
-            <div key={index} className="timeline-item">
-              <div className="timeline-year">{item.year}</div>
-              <div className="timeline-content">
-                <h4>{item.title}</h4>
-                <p>{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- COMPREHENSIVE SUPPORT --- */}
-      <section className="support-overview-section">
-        <div className="section-title-wrapper">
-          <span className="section-subtitle">Lifecycle Care</span>
-          <h2 className="line-heading-text">Comprehensive Customer Support</h2>
-          <p className="support-desc-lead">Our relationship commitment extends far beyond the point of sale into lifelong after-sales operational support.</p>
-        </div>
-        <div className="support-grid">
-          {supportServices.map((srv, index) => (
-            <div key={index} className="support-card">
-              <div className="support-number">0{index + 1}</div>
-              <h4>{srv.title}</h4>
-              <p>{srv.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- CALL TO ACTION --- */}
-      <section className="about-cta-section">
-        <div className="about-cta-content">
-          <h2>Ready to Upgrade Your Manufacturing Capabilities?</h2>
-          <p>Get in touch with our engineering experts today for tailored machinery recommendations and quotes.</p>
-          <div className="about-cta-buttons">
-            <Link to="/contact" className="card-btn solid-btn">Contact Us</Link>
-            <Link to="/products" className="card-btn outline-btn-light">Explore Products</Link>
+      {/* 7. INDUSTRIES */}
+      <section className="abt-section">
+        <div className="abt-container">
+          <Reveal className="abt-head">
+            <span className="red-subtitle">Our Reach</span>
+            <h2 className="abt-h2">Industries We Serve</h2>
+            <p>Our automated systems work wherever precision sheet metal is required.</p>
+          </Reveal>
+          
+          <div className="industries-pill-container">
+            {industries.map((name, idx) => (
+              <Reveal key={name} delay={idx * 0.05} y={15}>
+                <div className="industry-pill">
+                  {name}
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* 8. DARK INDUSTRIAL CTA SECTION */}
+      <section className="app-cta-section">
+        <Reveal className="app-cta-content" y={40}>
+          <h2>Ready to Scale Up Your Production?</h2>
+          <p>Get your instant quote and let us help you from prototyping to mass production.</p>
+          <div className="cta-buttons-group">
+            <Link to="/contact" className="card-btn solid-btn">
+              Get a Quote
+            </Link>
+            <Link to="/contact" className="card-btn outline-btn-light">
+              Connect With Us
+            </Link>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 }

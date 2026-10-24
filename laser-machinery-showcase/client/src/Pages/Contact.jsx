@@ -64,7 +64,7 @@ export default function Contact() {
       .catch((err) => {
         console.error("Error saving to sheet:", err);
         setLoading(false);
-        alert("Submission failed. Please try calling us directly at +91 63526 44186.");
+        alert(`Submission failed. Please try calling us directly at ${siteConfig.phone}.`);
       });
   };
 
@@ -130,6 +130,7 @@ export default function Contact() {
 
           {/* Right Form Column */}
           <div className="contact-form-column">
+            <h2 className="contact-form-title">Contact <span>Us</span></h2>
             <form className="contact-form" onSubmit={handleSubmit}>
               
               <div className="form-field-group">
@@ -171,7 +172,7 @@ export default function Contact() {
         </div>
 
         {/* Bottom Departments Grid */}
-        <div className="contact-departments-grid">
+        {/* <div className="contact-departments-grid">
           <div className="dept-card">
             <h4>For Inquiry</h4>
             <div className="dept-info-row"><span>📞</span> {siteConfig.phone}</div>
@@ -185,9 +186,9 @@ export default function Contact() {
           <div className="dept-card">
             <h4>For Spares</h4>
             <div className="dept-info-row"><span>📞</span> {siteConfig.sparesPhone}</div>
-            <div className="dept-info-row"><span>✉️</span> {siteConfig.sparesEmail}</div>
+            <div className="dept-info-row"><span>✉️</span> spares.adk@gmail.com</div>
           </div>
-        </div>
+        </div> */}
 
       </div>
 

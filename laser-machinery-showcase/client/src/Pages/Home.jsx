@@ -13,7 +13,7 @@ export default function Home() {
   // Your machine images
   const slideImages = [
     "Laser.png",
-    "Plasma.png",,
+    "Plasma.png",
     "Press.png",
     "Shearing.png"
   ];

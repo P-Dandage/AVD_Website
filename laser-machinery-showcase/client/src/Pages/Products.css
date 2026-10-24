@@ -1,27 +1,28 @@
-/* --- PRODUCTS PAGE CONTAINER --- */
+/* =========================================================
+   PRODUCTS PAGE  (AVD theme: red #D31224 / black / white)
+   ========================================================= */
+
+/* --- PAGE CONTAINER --- */
 .products-page-container {
   background-color: #f8f9fa;
   color: #1a1a1a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 30px 24px;
-  padding-bottom: 60px;
+  padding: 30px 24px 60px;
   min-height: 80vh;
-  
 }
 
 .products-catalog-wrapper {
   max-width: 1350px;
- 
-  
+  margin: 0 auto;
 }
-/* --- CATALOG HEADER SECTION (Polished Industrial Theme) --- */
+
+/* --- CATALOG HEADER --- */
 .products-catalog-header {
   text-align: center;
-  margin-bottom: 50px;
-  background: linear-gradient(135deg, #111111 0%, #1c1c1c 100%); /* Rich dark industrial tone */
+  margin-bottom: 35px;
+  background: linear-gradient(135deg, #111111 0%, #1c1c1c 100%);
   padding: 35px 24px;
   border-radius: 8px;
-  /* border-bottom: 3px solid #D31224; AVD Red Accent Bottom Line */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -31,89 +32,126 @@
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
-/* Optional: if you want part of the title to pop with AVD red */
 .products-catalog-header h1 span {
   color: #D31224;
 }
 
 .products-catalog-header p {
-  color: #b0b0b0; /* Soft, readable light grey instead of stark white */
+  color: #b0b0b0;
   font-size: 1.05rem;
   max-width: 650px;
   margin: 0 auto;
   line-height: 1.5;
 }
-/* --- PROFESSIONAL GRID LAYOUT --- */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+
+/* --- CATEGORY FILTERS --- */
+.product-category-filters {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: 0 30px;
+  gap: 12px;
+  margin-bottom: 45px;
 }
 
-/* --- MODERN INDUSTRIAL PRODUCT CARD DESIGN --- */
+.category-pill {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #1a1a1a;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.category-pill:hover {
+  border-color: #D31224;
+  color: #D31224;
+  transform: translateY(-2px);
+}
+
+.category-pill.active {
+  background-color: #D31224;
+  border-color: #D31224;
+  color: #ffffff;
+  box-shadow: 0 8px 15px rgba(211, 18, 36, 0.25);
+  transform: translateY(-2px);
+}
+
+/* --- GRID --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 28px;
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* --- CARD (height grows with its content) --- */
 .product-card {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
-  position: relative;
-  
-  /* Strict identical sizing for clean grid alignment */
   width: 100%;
-  height: 430px; 
-
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.35s ease;
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: #D31224; /* AVD Brand Red Accent on Hover */
+  box-shadow: 0 22px 30px -8px rgba(0, 0, 0, 0.14);
+  border-color: black;
 }
 
-/* --- CRISP & PROMINENT IMAGE FRAME --- */
+/* --- BIG MACHINE IMAGE --- */
 .product-card-img-container {
-  height: 230px;
+  display: block;
   width: 100%;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 4 / 3;            
+  margin: 0;
+  padding: 8px;                   
+  border: 0;
+  cursor: pointer;
   overflow: hidden;
-  position: relative;
-  padding: 20px;
+  background: radial-gradient(circle at 50% 40%, #ffffff 0%, #eef0f3 100%);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .product-card-img-container img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.1));
-  transition: transform 0.4s ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;            
+  filter: drop-shadow(0 12px 10px rgba(0, 0, 0, 0.14));
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .product-card:hover .product-card-img-container img {
-  transform: scale(1.08); /* Smooth responsive zoom */
+  transform: scale(1.06);
 }
 
-/* --- CARD CONTENT & ACTIONS AREA --- */
+/* --- DETAILS --- */
 .product-card-content {
-  padding: 20px 22px;
+  padding: 18px 22px 22px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: space-between;
+  justify-content: space-between;  
   background-color: #ffffff;
+  border-top: 1px solid #D31224;
 }
 
 .product-card-text-group {
@@ -131,17 +169,47 @@
 }
 
 .product-card-title {
+  margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
   color: #1f2937;
   line-height: 1.35;
 }
 
-/* --- ACTION BUTTONS CONTAINER --- */
+.product-card-desc {
+  margin: 6px 0 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-specs {
+  margin: 10px 0 0;
+  padding: 6px 10px;
+  background: #f3f4f6;
+  border-left: 3px solid #D31224;
+  border-radius: 0 6px 6px 0;
+  color: #111111;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- ACTION BUTTONS --- */
 .product-card-actions {
   display: flex;
   gap: 12px;
-  margin-top: 15px;
+  margin-top: 16px;
 }
 
 .product-view-more-btn {
@@ -185,7 +253,19 @@
   background-color: #b91c1c;
 }
 
-/* --- DETAILED SPECIFICATION VIEW (When "View More" is triggered) --- */
+/* --- KEYBOARD FOCUS (accessibility) --- */
+.product-card-img-container:focus-visible,
+.product-view-more-btn:focus-visible,
+.product-inquiry-btn:focus-visible,
+.back-btn:focus-visible,
+.product-enquire-btn:focus-visible {
+  outline: 3px solid #D31224;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   DETAIL VIEW
+   ========================================================= */
 .product-detail-view-wrapper {
   background-color: #ffffff;
   padding: 50px;
@@ -222,8 +302,8 @@
 }
 
 .product-detail-img-box {
-  background-color: #f9fafb;
-  padding: 40px;
+  background: radial-gradient(circle at 50% 40%, #ffffff 0%, #eef0f3 100%);
+  padding: 24px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
   display: flex;
@@ -234,8 +314,10 @@
 
 .product-detail-img-box img {
   width: 100%;
-  max-height: 360px;
+  height: auto;
+  max-height: 440px;
   object-fit: contain;
+  filter: drop-shadow(0 14px 12px rgba(0, 0, 0, 0.14));
 }
 
 .product-detail-category {
@@ -252,7 +334,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #111111;
-  margin-bottom: 16px;
+  margin: 0 0 16px;
   line-height: 1.2;
 }
 
@@ -286,6 +368,7 @@
   color: #374151;
   font-weight: 600;
   font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .product-enquire-btn {
@@ -306,10 +389,101 @@
   background-color: #b91c1c;
 }
 
-/* Responsive adjustments */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 900px) {
+  .product-detail-view-wrapper {
+    padding: 28px;
+  }
+
   .product-detail-grid {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  .product-detail-img-box {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-page-container {
+    padding: 20px 14px 50px;
+  }
+
+  .products-catalog-header {
+    padding: 26px 16px;
+    margin-bottom: 28px;
+  }
+
+  .products-catalog-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .products-catalog-header p {
+    font-size: 0.95rem;
+  }
+  
+  .product-category-filters {
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .category-pill {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .product-card-img-container {
+    aspect-ratio: 16 / 11;
+  }
+
+  .product-detail-view-wrapper {
+    padding: 18px;
+  }
+
+  .product-detail-img-box {
+    padding: 14px;
+  }
+
+  .product-detail-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Touch screens: no hover-lift (it "sticks" after a tap) */
+@media (hover: none) {
+  .product-card:hover {
+    transform: none;
+    border-color: #e2e8f0;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  .product-card:hover .product-card-img-container img {
+    transform: none;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .product-card-img-container img,
+  .category-pill {
+    transition: none;
+  }
+
+  .product-card:hover,
+  .product-card:hover .product-card-img-container img,
+  .category-pill:hover,
+  .category-pill.active {
+    transform: none;
   }
 }

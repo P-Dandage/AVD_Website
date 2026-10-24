@@ -1,0 +1,193 @@
+
+        {/* ---------- 3. WHY AVD ---------- */}
+        <section className="abt-section abt-soft">
+          <div className="abt-container">
+            <Reveal>
+              <div className="abt-head">
+                <h2 className="abt-h2">Why manufacturers choose AVD</h2>
+                <p>Built on long-term relationships, standardised solutions and uncompromising reliability.</p>
+              </div>
+            </Reveal>
+
+            <div className="abt-why-grid">
+              {reasons.map((r, i) => (
+                <Reveal key={r.title} delay={(i % 3) * 0.08}>
+                  <article className="abt-why">
+                    <span className="abt-icon"><Icon name={r.icon} /></span>
+                    <h3>{r.title}</h3>
+                    <p>{r.desc}</p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal>
+              <p className="abt-trusted">
+                Trusted by leading enterprises and government research sectors.{' '}
+                <Link to="/client">See our clients <Icon name="arrow" /></Link>
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+      
+
+        {/* ---------- 5. HOW WE WORK ---------- */}
+        <section className="abt-section">
+          <div className="abt-container">
+            <Reveal>
+              <div className="abt-head">
+                <h2 className="abt-h2">From first call to full production</h2>
+                <p>A simple process, with one team accountable at every step.</p>
+              </div>
+            </Reveal>
+
+            <ol className="abt-steps">
+              {steps.map((s, i) => (
+                <li key={s.title}>
+                  <Reveal delay={i * 0.1}>
+                    <div className="abt-step">
+                      <span className="abt-step-no">{i + 1}</span>
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                    </div>
+                  </Reveal>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ---------- 6. INDUSTRIES ---------- */}
+        <section className="abt-section abt-soft abt-tight">
+          <div className="abt-container">
+            <Reveal>
+              <div className="abt-head">
+                <h2 className="abt-h2">Industries we serve</h2>
+                <p>Our machines work wherever precision sheet metal is made.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <ul className="abt-chips">
+                {industries.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+
+
+
+
+/* =========================================================
+   3. WHY AVD
+   ========================================================= */
+.abt-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.abt-why-grid > div { display: flex; }
+
+.abt-why {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px 28px;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s ease;
+}
+.abt-why:hover { transform: translateY(-6px); border-color: var(--red); box-shadow: 0 18px 34px rgba(0, 0, 0, 0.1); }
+.abt-why .abt-icon { margin-bottom: 18px; }
+.abt-why h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--black); }
+.abt-why p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 0.95rem; }
+
+.abt-trusted { margin: 44px 0 0; text-align: center; color: var(--muted); font-size: 1.02rem; }
+.abt-trusted a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+  color: var(--red);
+  font-weight: 700;
+  text-decoration: none;
+}
+.abt-trusted a:hover { text-decoration: underline; }
+.abt-trusted svg { width: 16px; height: 16px; }
+
+
+
+/* =========================================================
+   5. HOW WE WORK  (a real sequence, so numbers are used)
+   ========================================================= */
+.abt-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.abt-steps li { position: relative; display: flex; }
+.abt-steps li > div { display: flex; flex: 1; }
+
+.abt-step {
+  position: relative;
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 30px 26px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.abt-step-no {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Barlow Condensed', 'Segoe UI', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.abt-step h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--black); }
+.abt-step p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 0.93rem; }
+
+/* dashed connector to the next step */
+.abt-steps li:not(:last-child) .abt-step::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 53px;
+  left: calc(26px + 46px + 8px);
+  width: calc(100% - 26px - 46px - 8px + 24px - 8px);
+  border-top: 2px dashed #c9cdd3;
+}
+
+/* =========================================================
+   6. INDUSTRIES
+   ========================================================= */
+.abt-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.abt-chips li {
+  padding: 11px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.abt-chips li:hover { background: var(--red); border-color: var(--red); color: #fff; }

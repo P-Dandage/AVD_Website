@@ -1,115 +1,231 @@
+/* =====================================
+   FLOATING CONTACT WIDGET
+   Collapsed: Icons only
+   Expanded: Icons + Labels
+===================================== */
+
 .floating-contact {
   position: fixed;
   left: 0;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 5px;
   z-index: 900;
+  max-width: calc(100vw - 12px);
 }
 
-/* Base button styles */
+/* Common Button Styles */
 .fc-btn {
   display: flex;
   align-items: center;
-  height: 52px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  height: 50px;
+  min-height: 50px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  border-radius: 0 9px 9px 0;
+  color: #fff;
   text-decoration: none;
-  box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+  transition:
+    width 0.3s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* Toggle Arrow Button */
+/* =====================================
+   ARROW BUTTON
+===================================== */
+
 .fc-toggle {
-  width: 52px;
+  width: 40px;
+  min-width: 40px;
   justify-content: center;
-  background: #C53030; /* Red */
+  background: #c8102e;
   color: #fff;
-  font-size: 1.2rem;
   cursor: pointer;
+  position: relative;
   z-index: 2;
 }
 
-.fc-toggle .arrow-icon {
-  transition: transform 0.35s ease;
+.fc-toggle:hover {
+  background: #a90e26;
+}
+
+.arrow-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
 .fc-toggle.open .arrow-icon {
   transform: rotate(180deg);
 }
 
-/* Expanded items wrapper */
+/* =====================================
+   OPTIONS CONTAINER
+   Always visible: icons remain displayed
+===================================== */
+
 .fc-items-container {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-
-/* Expanded state when container is open */
-.floating-contact.expanded .fc-items-container {
-  max-height: 300px;
+  align-items: flex-start;
+  gap: 5px;
+  width: auto;
+  max-height: none;
   opacity: 1;
+  overflow: visible;
 }
 
-/* Individual options */
+/* =====================================
+   INDIVIDUAL OPTIONS
+===================================== */
+
 .fc-item {
-  width: 52px; /* Collapsed width showing only icon */
-  white-space: nowrap;
-  color: #fff;
+  width: 40px;
+  max-width: calc(100vw - 12px);
+  flex-shrink: 0;
+  justify-content: flex-start;
+  font-family: inherit;
+  font-size: 0.9rem;
   font-weight: 600;
-  font-size: 0.95rem;
 }
 
-/* Expand width on hover of the whole widget or when container is open */
-.floating-contact:hover .fc-item,
+/* Show labels only when the arrow is clicked */
 .floating-contact.expanded .fc-item {
-  width: 175px; /* Expands to show text label */
+  width: 130px;
 }
 
+/* Icon Area */
 .fc-icon-box {
-  min-width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  font-size: 1.25rem;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.fc-label {
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
-  padding-right: 16px;
+.fc-icon-box svg {
+  display: block;
 }
 
-.floating-contact:hover .fc-label,
+/* Text Label */
+.fc-label {
+  display: block;
+  padding-right: 12px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.22s ease;
+  pointer-events: none;
+}
+
+/* Labels appear on click, not hover */
 .floating-contact.expanded .fc-label {
   opacity: 1;
   transform: translateX(0);
+  transition-delay: 0.08s;
 }
 
-/* Theme Colors matching reference image */
-.fc-inquiry {
-  background: #1A202C; /* Dark Charcoal */
-}
+/* =====================================
+   OPTION COLORS
+===================================== */
 
-.fc-email {
-  background: #C53030; /* Red */
-}
-
-.fc-phone {
-  background: #1A202C; /* Dark Charcoal */
-}
-
+/* WhatsApp */
 .fc-wa {
-  background: #25D366; /* WhatsApp Green */
+  background: #20b85a;
+}
+
+.fc-wa:hover {
+  background: #159447;
+}
+
+/* Email */
+.fc-email {
+  background: #c8102e;
+}
+
+.fc-email:hover {
+  background: #a90e26;
+}
+
+/* Catalogue */
+.fc-catalogue {
+  background: #252d3b;
+}
+
+.fc-catalogue:hover {
+  background: #151b27;
+}
+
+/* Hover feedback */
+.fc-item:hover,
+.fc-toggle:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyboard Accessibility */
+.fc-btn:focus-visible {
+  outline: 3px solid #f4b942;
+  outline-offset: 2px;
+  position: relative;
+  z-index: 3;
+}
+
+/* =====================================
+   MOBILE RESPONSIVENESS
+===================================== */
+
+@media (max-width: 600px) {
+  .floating-contact {
+    gap: 4px;
+  }
+
+  .fc-items-container {
+    gap: 4px;
+  }
+
+  .fc-btn {
+    height: 46px;
+    min-height: 46px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .fc-toggle,
+  .fc-item {
+    width: 46px;
+    min-width: 46px;
+  }
+
+  .fc-icon-box {
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+  }
+
+  .floating-contact.expanded .fc-item {
+    width: min(160px, calc(100vw - 12px));
+  }
+
+  .fc-item {
+    font-size: 0.84rem;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fc-btn,
+  .arrow-icon,
+  .fc-label {
+    transition: none;
+  }
 }
