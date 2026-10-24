@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import QuoteModal from '../components/QuoteModal';
 import { productsData } from '../components/Products';
 
 import './Home.css';
 
+const ease = [0.22, 1, 0.36, 1];
+
+function Reveal({ children, delay = 0, y = 30, className, once = true }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: once, amount: 0.2 }}
+      transition={{ duration: reduce ? 0 : 0.8, delay: reduce ? 0 : delay, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function Home() {
   // --- Simple Slideshow Logic ---
   const [currentSlide, setCurrentSlide] = useState(0);
-    const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   // Your machine images
   const slideImages = [
@@ -18,7 +36,7 @@ export default function Home() {
     "Shearing.png"
   ];
 
-//Application Marquee Logic
+  //Application Marquee Logic
   React.useEffect(() => {
     const container = document.getElementById('appMarqueeContainer');
     if (!container) return;
@@ -103,51 +121,52 @@ export default function Home() {
 
       {/* 2. ABOUT US SECTION */}
       <section className="about-section">
-    
-        <div className="about-text">
+        <Reveal className="about-text">
           <span className="section-subtitle">Discover Our Company</span>
           <h2>Welcome to <span>AVD Machine Tools</span></h2>
           <p>
             AVD MACHINE TOOLS is a premier provider of cutting-edge machinery for the sheet metal industry. We stand at the forefront of innovation, delivering solutions focused on Precision, Performance, and Productivity.
           </p>
           <div className="about-features">
-            <div className="feature-item">
+            <Reveal delay={0.1} y={15}><div className="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
               High-Precision Engineering
-            </div>
-            <div className="feature-item">
+            </div></Reveal>
+            <Reveal delay={0.2} y={15}><div className="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
               Robust & Durable Build
-            </div>
-            <div className="feature-item">
+            </div></Reveal>
+            <Reveal delay={0.3} y={15}><div className="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
               Expert Support Team
-            </div>
-            <div className="feature-item">
+            </div></Reveal>
+            <Reveal delay={0.4} y={15}><div className="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
               Customized Solutions
-            </div>
+            </div></Reveal>
           </div>
-          <Link to="/about" className="slide-btn" style={{ marginTop: '10px' }}>Read More</Link>
-        </div>
-        <div className="about-image-container">
+          <Reveal delay={0.5} y={10}>
+            <Link to="/about" className="slide-btn" style={{ marginTop: '10px' }}>Read More</Link>
+          </Reveal>
+        </Reveal>
+        <Reveal className="about-image-container" delay={0.3}>
           {/* Using the laser machine image as a placeholder for the about section */}
           <img src="Plasma.png" alt="AVD Machine Tools Facility" className="about-image" />
-        </div>
+        </Reveal>
       </section>
 
       {/* --- 3. OUR PRODUCTS (Infinite Ticker with Clickable Arrows) --- */}
       <section className="simple-products-section">
-        <div className="section-title-wrapper">
+        <Reveal className="section-title-wrapper">
           <div className="line-heading">
             <span className="heading-line"></span>
             <h2 className="line-heading-text">OUR PRODUCTS</h2>
             <span className="heading-line"></span>
           </div>
           <span className="section-subtitle" style={{ marginTop: '10px' }}>What We Offer</span>
-        </div>
+        </Reveal>
         
-        <div className="product-carousel-wrapper">
+        <Reveal className="product-carousel-wrapper" delay={0.2}>
           <button 
             className="carousel-arrow product-left-arrow" 
             onClick={() => {
@@ -193,12 +212,12 @@ export default function Home() {
           >
             &#10095;
           </button>
-        </div>
+        </Reveal>
       </section>
 
       {/* --- 4. WHY CHOOSE US --- */}
       <section className="why-choose-section">
-        <div className="section-title-wrapper">
+        <Reveal className="section-title-wrapper">
           <div className="line-heading">
             <span className="heading-line"></span>
             <h2 className="line-heading-text">WHY <span>CHOOSE AVD</span></h2>
@@ -207,51 +226,59 @@ export default function Home() {
           <p className="why-subtitle-desc">
             AVD Machine Tools provides sheet-metal machinery solutions focused on precision, performance and productivity.
           </p>
-        </div>
+        </Reveal>
 
         <div className="why-grid">
-          <div className="why-card">
-            <div className="why-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          <Reveal delay={0.1}>
+            <div className="why-card">
+              <div className="why-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              </div>
+              <h4>PRECISION</h4>
+              <p>Accurate machine solutions engineered with micro-tolerance control to deliver flawless cuts, bends, and absolute repeatability.</p>
             </div>
-            <h4>PRECISION</h4>
-            <p>Accurate machine solutions engineered with micro-tolerance control to deliver flawless cuts, bends, and absolute repeatability.</p>
-          </div>
+          </Reveal>
           
-          <div className="why-card">
-            <div className="why-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          <Reveal delay={0.2}>
+            <div className="why-card">
+              <div className="why-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <h4>PERFORMANCE</h4>
+              <p>Reliable production capability built to withstand heavy-duty, 24/7 industrial manufacturing cycles without compromising output.</p>
             </div>
-            <h4>PERFORMANCE</h4>
-            <p>Reliable production capability built to withstand heavy-duty, 24/7 industrial manufacturing cycles without compromising output.</p>
-          </div>
+          </Reveal>
 
-          <div className="why-card">
-            <div className="why-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <Reveal delay={0.3}>
+            <div className="why-card">
+              <div className="why-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <h4>PRODUCTIVITY</h4>
+              <p>Efficient manufacturing solutions designed to accelerate cycle times, minimize raw material waste, and maximize plant ROI.</p>
             </div>
-            <h4>PRODUCTIVITY</h4>
-            <p>Efficient manufacturing solutions designed to accelerate cycle times, minimize raw material waste, and maximize plant ROI.</p>
-          </div>
+          </Reveal>
 
-          <div className="why-card">
-            <div className="why-icon">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <Reveal delay={0.4}>
+            <div className="why-card">
+              <div className="why-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+              </div>
+              <h4>SUPPORT</h4>
+              <p>Customer-focused service backed by expert technical engineers ready to assist with installation, training, and maintenance.</p>
             </div>
-            <h4>SUPPORT</h4>
-            <p>Customer-focused service backed by expert technical engineers ready to assist with installation, training, and maintenance.</p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* --- 5. APPLICATION SECTION (Auto-Scrolling Marquee) --- */}
       <section className="application-section">
-        <div className="section-title-wrapper">
+        <Reveal className="section-title-wrapper">
           <span className="section-subtitle">Industries We Serve</span>
           <h2 className="section-title">Application Areas</h2>
-        </div>
+        </Reveal>
         
-        <div className="marquee-container" id="appMarqueeContainer">
+        <Reveal className="marquee-container" id="appMarqueeContainer" delay={0.2} y={40}>
           <div className="marquee-track">
             {/* We duplicate the array to create a seamless infinite loop */}
             {[
@@ -285,10 +312,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
-  <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
+      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </div>
-    
   );
 }

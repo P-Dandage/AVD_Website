@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import SuccessModal from '../components/SuccessModal';
 import './Contact.css';
 import { siteConfig } from '../siteConfig';
+
+const ease = [0.22, 1, 0.36, 1];
+
+function Reveal({ children, delay = 0, y = 30, className, once = true }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: once, amount: 0.2 }}
+      transition={{ duration: reduce ? 0 : 0.8, delay: reduce ? 0 : delay, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -58,7 +76,6 @@ export default function Contact() {
       .then(() => {
         setLoading(false);
         setIsSuccessOpen(true);
-        // Clear form fields after successful submit
         setFormData({ name: '', company: '', email: '', city: '', phone: '', requirement: '' });
       })
       .catch((err) => {
@@ -73,10 +90,10 @@ export default function Contact() {
       
       {/* Hero Banner Section */}
       <div className="contact-hero-banner">
-        <div className="contact-hero-overlay">
+        <Reveal className="contact-hero-overlay" y={20}>
           <h1>Contact Us</h1>
           <p>Get in touch with our engineering team for industrial machinery, quotes, and support.</p>
-        </div>
+        </Reveal>
       </div>
 
       <div className="contact-main-container">
@@ -85,51 +102,51 @@ export default function Contact() {
           
           {/* Left Info Column */}
           <div className="contact-info-column">
-            <div className="contact-info-header">
+            <Reveal className="contact-info-header">
               <h2>Get In Touch</h2>
               <p>Feel free to contact us via phone or email anytime if you have any questions or need help!</p>
-            </div>
+            </Reveal>
 
-            <div className="contact-detail-block">
+            <Reveal className="contact-detail-block" delay={0.1}>
               <div className="contact-icon-box">📍</div>
               <div>
                 <h3>Address</h3>
                 <p>{siteConfig.address}</p>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="contact-detail-block">
+            <Reveal className="contact-detail-block" delay={0.2}>
               <div className="contact-icon-box">🏭</div>
               <div>
                 <h3>Factory Address</h3>
                 <p>{siteConfig.factoryAddress}</p>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="contact-detail-block">
+            <Reveal className="contact-detail-block" delay={0.3}>
               <div className="contact-icon-box">📞</div>
               <div>
                 <h3>Phone</h3>
                 <p>{siteConfig.phone}</p>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="contact-detail-block">
+            <Reveal className="contact-detail-block" delay={0.4}>
               <div className="contact-icon-box">✉️</div>
               <div>
                 <h3>Email</h3>
                 <p>{siteConfig.email}</p>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="branches-tag-box">
+            <Reveal className="branches-tag-box" delay={0.5}>
               <strong>Our Branches:</strong>
               <span>Pune </span>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right Form Column */}
-          <div className="contact-form-column">
+          <Reveal className="contact-form-column" delay={0.2} y={40}>
             <h2 className="contact-form-title">Contact <span>Us</span></h2>
             <form className="contact-form" onSubmit={handleSubmit}>
               
@@ -167,29 +184,9 @@ export default function Contact() {
                 {loading ? 'Submitting...' : 'Submit Now!'}
               </button>
             </form>
-          </div>
+          </Reveal>
 
         </div>
-
-        {/* Bottom Departments Grid */}
-        {/* <div className="contact-departments-grid">
-          <div className="dept-card">
-            <h4>For Inquiry</h4>
-            <div className="dept-info-row"><span>📞</span> {siteConfig.phone}</div>
-            <div className="dept-info-row"><span>✉️</span> {siteConfig.email}</div>
-          </div>
-          <div className="dept-card">
-            <h4>For Service</h4>
-            <div className="dept-info-row"><span>📞</span> {siteConfig.phone}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{siteConfig.servicePhones[1]}</div>
-            <div className="dept-info-row"><span>✉️</span> {siteConfig.serviceEmail}</div>
-          </div>
-          <div className="dept-card">
-            <h4>For Spares</h4>
-            <div className="dept-info-row"><span>📞</span> {siteConfig.sparesPhone}</div>
-            <div className="dept-info-row"><span>✉️</span> spares.adk@gmail.com</div>
-          </div>
-        </div> */}
-
       </div>
 
       {/* Render Animated Success Modal */}

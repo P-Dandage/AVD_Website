@@ -1,6 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import './Application.css';
+
+const ease = [0.22, 1, 0.36, 1];
+
+function Reveal({ children, delay = 0, y = 30, className, once = true }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: once, amount: 0.2 }}
+      transition={{ duration: reduce ? 0 : 0.8, delay: reduce ? 0 : delay, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Application() {
   const applicationData = [
@@ -21,57 +39,49 @@ export default function Application() {
       {/* --- PAGE HEADER BANNER --- */}
       <section className="app-header-banner">
         <div className="banner-overlay"></div>
-        <div className="banner-content">
+        <Reveal className="banner-content" y={20}>
           <h1>Industries We <span>Serve</span></h1>
           <p>Delivering high-performance sheet metal machinery solutions across diverse industrial sectors worldwide.</p>
-          
-        </div>
+        </Reveal>
       </section>
 
       {/* --- INTRO SECTION --- */}
       <section className="app-intro-section">
-        <div className="app-intro-container">
+        <Reveal className="app-intro-container">
           <span className="section-subtitle">Our Core Markets</span>
           <h2>Trusted Solutions for Every Industry</h2>
-        </div>
+        </Reveal>
       </section>
 
-      {/* --- APPLICATIONS GRID (Image & Name Only) --- */}
+      {/* --- APPLICATIONS GRID --- */}
       <section className="app-grid-section">
         <div className="app-grid-container">
           {applicationData.map((app, index) => (
-            <div 
-              key={index} 
-              className="industry-card-Clean"
-            >
-              {/* Background Image Container for Zoom/Focus Effect */}
-              <div 
-                className="industry-card-bg"
-                style={{ backgroundImage: `url('${app.img}')` }}
-              ></div>
-              
-              {/* Overlay that darkens on hover */}
-              <div className="industry-overlay-Clean"></div>
-              
-              {/* Title positioned at the bottom */}
-              <div className="industry-content-Clean">
-                <h3>{app.name}</h3>
+            <Reveal key={index} delay={(index % 3) * 0.1}>
+              <div className="industry-card-Clean">
+                <div 
+                  className="industry-card-bg"
+                  style={{ backgroundImage: `url('${app.img}')` }}
+                ></div>
+                <div className="industry-overlay-Clean"></div>
+                <div className="industry-content-Clean">
+                  <h3>{app.name}</h3>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* --- UPDATED CTA SECTION --- */}
       <section className="app-cta-section">
-        <div className="app-cta-content">
+        <Reveal className="app-cta-content" y={30}>
           <h2>Have a Specific Industrial Application?</h2>
           <p>Need a custom solution for your manufacturing process? Connect with our experts today for a consultation or a free quote.</p>
           <div className="cta-buttons-group">
             <Link to="/contact" className="card-btn solid-btn">Connect With Us</Link>
-            
           </div>
-        </div>
+        </Reveal>
       </section>
 
     </div>

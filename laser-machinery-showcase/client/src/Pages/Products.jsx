@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { catalogData } from '../components/productsCatalog';
 import './Products.css';
+
+// Reusable animation configuration
+const ease = [0.22, 1, 0.36, 1];
+
+function Reveal({ children, delay = 0, y = 30, className, once = true }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: once, amount: 0.1 }}
+      transition={{ duration: reduce ? 0 : 0.8, delay: reduce ? 0 : delay, ease }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Products() {
   const [searchParams] = useSearchParams();
@@ -46,7 +65,7 @@ export default function Products() {
   // Open a product's detail view and bring it into view
   const openDetails = (product) => {
     setDetailedProduct(product);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Dynamic page title
@@ -65,29 +84,31 @@ export default function Products() {
       {currentProductToShow ? (
         /* ---------- DETAIL VIEW ---------- */
         <div className="product-detail-view-wrapper">
-          <button
-            type="button"
-            className="back-btn"
-            onClick={() => {
-              setDetailedProduct(null);
-              // Keeps the category filter active if they go back
-              navigate(selectedCategory ? `/products?category=${selectedCategory}` : '/products');
-            }}
-          >
-            &larr; Back to Products
-          </button>
+          <Reveal y={-10}>
+            <button
+              type="button"
+              className="back-btn"
+              onClick={() => {
+                setDetailedProduct(null);
+                // Keeps the category filter active if they go back
+                navigate(selectedCategory ? `/products?category=${selectedCategory}` : '/products');
+              }}
+            >
+              &larr; Back to Products
+            </button>
+          </Reveal>
 
           <div className="product-detail-grid">
-            <div className="product-detail-img-box">
+            <Reveal className="product-detail-img-box" delay={0.1}>
               <img
                 src={currentProductToShow.image}
                 alt={currentProductToShow.name}
                 width="800"
                 height="600"
               />
-            </div>
+            </Reveal>
 
-            <div className="product-detail-info">
+            <Reveal className="product-detail-info" delay={0.2}>
               <span className="product-detail-category">
                 {currentProductToShow.categoryName}
               </span>
@@ -105,22 +126,22 @@ export default function Products() {
               >
                 Enquire Now
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       ) : (
         /* ---------- CATALOG VIEW ---------- */
         <div className="products-catalog-wrapper">
-          <div className="products-catalog-header">
+          <Reveal className="products-catalog-header" y={20}>
             <h1>{categoryTitle || (selectedCategory ? 'Our Products' : 'All Products Catalog')}</h1>
             <p>
               Explore high-precision machinery engineered for superior industrial
               performance.
             </p>
-          </div>
+          </Reveal>
 
           {/* ---------- CATEGORY FILTER INDICATORS ---------- */}
-          <div className="product-category-filters">
+          <Reveal className="product-category-filters" delay={0.1} y={15}>
             <button
               type="button"
               className={`category-pill ${!selectedCategory ? 'active' : ''}`}
@@ -138,52 +159,53 @@ export default function Products() {
                 {cat.name}
               </button>
             ))}
-          </div>
+          </Reveal>
 
           <div className="products-grid">
-            {displayedProducts.map((product) => (
-              <article key={product.id} className="product-card">
-                {/* Big machine image (tap to open details) */}
-                <button
-                  type="button"
-                  className="product-card-img-container"
-                  onClick={() => openDetails(product)}
-                  aria-label={`View details of ${product.name}`}
-                >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    loading="lazy"
-                    decoding="async"
-                    width="800"
-                    height="600"
-                  />
-                </button>
+            {displayedProducts.map((product, index) => (
+              /* Notice the delay calculation to stagger the cards row by row */
+              <Reveal key={product.id} delay={(index % 4) * 0.1} y={30}>
+                <article className="product-card">
+                  <button
+                    type="button"
+                    className="product-card-img-container"
+                    onClick={() => openDetails(product)}
+                    aria-label={`View details of ${product.name}`}
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      loading="lazy"
+                      decoding="async"
+                      width="800"
+                      height="600"
+                    />
+                  </button>
 
-                {/* Details */}
-                <div className="product-card-content">
-                  <div className="product-card-text-group">
-                    <span className="product-card-cat-label">{product.categoryName}</span>
-                    <h3 className="product-card-title">{product.name}</h3>
-                  </div>
+                  <div className="product-card-content">
+                    <div className="product-card-text-group">
+                      <span className="product-card-cat-label">{product.categoryName}</span>
+                      <h3 className="product-card-title">{product.name}</h3>
+                    </div>
 
-                  <div className="product-card-actions">
-                    <button
-                      type="button"
-                      onClick={() => openDetails(product)}
-                      className="product-view-more-btn"
-                    >
-                      View More
-                    </button>
-                    <Link
-                      to={`/contact?inquiry=${encodeURIComponent(product.name)}`}
-                      className="product-inquiry-btn"
-                    >
-                      Inquiry
-                    </Link>
+                    <div className="product-card-actions">
+                      <button
+                        type="button"
+                        onClick={() => openDetails(product)}
+                        className="product-view-more-btn"
+                      >
+                        View More
+                      </button>
+                      <Link
+                        to={`/contact?inquiry=${encodeURIComponent(product.name)}`}
+                        className="product-inquiry-btn"
+                      >
+                        Inquiry
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
