@@ -1,7 +1,7 @@
-// Import assets correctly so Vite bundles them for production
-import laserImg from '../assets/Laser.png';
-import plasmaImg from '../assets/Plasma.png';
-import shearingImg from '../assets/Shearing.png';
+// // Import assets correctly so Vite bundles them for production
+// import laserImg from '../assets/Laser.png';
+// import plasmaImg from '../assets/Plasma.png';
+// import shearingImg from '../assets/Shearing.png';
 
 export const catalogData = [
   {
@@ -9,7 +9,7 @@ export const catalogData = [
     name: "Industrial Pioneer Series",
     category: "fiber-laser",
     categoryName: "Fiber Laser Cutting Machine",
-    image: laserImg,
+    image: "Laser_machine.png",
     description: "Heavy-duty industrial fiber laser cutting system engineered for continuous high-speed sheet metal fabrication with maximum precision.",
     specifications: "Power: 1kW - 20kW | Cutting Area: 3000x1500mm to 12000x2500mm | Max Speed: 140m/min"
   },
@@ -18,7 +18,7 @@ export const catalogData = [
     name: "In-demand Innovation",
     category: "fiber-laser",
     categoryName: "Fiber Laser Cutting Machine",
-    image: laserImg,
+    image: "Laser_machine.png",
     description: "Next-generation compact laser cutting architecture optimized for fast job-shop turnaround and high energy efficiency.",
     specifications: "Power: 1.5kW - 6kW | Cutting Bed: Compact Modular | Control: CypCut CNC"
   },
@@ -27,7 +27,7 @@ export const catalogData = [
     name: "Futuristic Laser Series",
     category: "fiber-laser",
     categoryName: "Fiber Laser Cutting Machine",
-    image: laserImg,
+    image: "Laser_machine.png",
     description: "Ultra-high power intelligent laser cutting machine featuring automated nozzle changing and advanced AI plate alignment.",
     specifications: "Power: Up to 40kW | Precision: ±0.03mm | Auto Focus Head"
   },
@@ -36,7 +36,7 @@ export const catalogData = [
     name: "Professional Tube Cutting Machine",
     category: "fiber-laser",
     categoryName: "Fiber Laser Cutting Machine",
-    image: laserImg,
+    image: "Laser_machine.png",
     description: "Specialized rotary fiber laser system designed for flawless profile, pipe, and tube cutting across complex designs.",
     specifications: "Diameter: 20-350mm | Length: 6000mm | Pneumatic Chucks"
   },
@@ -45,7 +45,7 @@ export const catalogData = [
     name: "Dual-position Exchange Table",
     category: "fiber-laser",
     categoryName: "Fiber Laser Cutting Machine",
-    image: laserImg,
+    image: "Laser_machine.png",
     description: "High-throughput fiber laser equipped with a hydraulic shuttle exchange table for simultaneous loading and cutting.",
     specifications: "Exchange Time: < 15 seconds | Fully Enclosed Cabin"
   },
@@ -54,7 +54,7 @@ export const catalogData = [
     name: "Gantry Type",
     category: "plasma",
     categoryName: "CNC Plasma Cutting Machine",
-    image: plasmaImg,
+    image: "Plasma_machine.png",
     description: "Heavy gantry structure CNC plasma and oxyfuel cutting machine built for massive structural steel plates.",
     specifications: "Width: Up to 6000mm | Thickness: Up to 150mm"
   },
@@ -63,7 +63,7 @@ export const catalogData = [
     name: "Table Type",
     category: "plasma",
     categoryName: "CNC Plasma Cutting Machine",
-    image: plasmaImg,
+    image: "Plasma_machine.png",
     description: "Integrated table-type CNC plasma cutter offering rigid stability and excellent fume extraction performance.",
     specifications: "Table Size: 1500x3000mm | Dual Side Servo Drive"
   },
@@ -72,7 +72,7 @@ export const catalogData = [
     name: "Portable Type",
     category: "plasma",
     categoryName: "CNC Plasma Cutting Machine",
-    image: plasmaImg,
+    image: "Plasma_machine.png",
     description: "Compact and portable CNC plasma cutting machine ideal for on-site fabrication and smaller workshop floors.",
     specifications: "Cutting Width: 1500mm | Lightweight Aluminum Alloy Beam"
   },
@@ -81,7 +81,7 @@ export const catalogData = [
     name: "CNC Press Brake",
     category: "press-brake",
     categoryName: "CNC / NC Press Brake",
-    image: shearingImg,
+    image: "Press_machine.png",
     description: "Multi-axis CNC synchronized press brake machine equipped with advanced graphical controllers for precise angle bending.",
     specifications: "Tonnage: 100T - 500T | Length: 2500mm - 6000mm | Delem Controller"
   },
@@ -90,7 +90,7 @@ export const catalogData = [
     name: "NC Press Brake",
     category: "press-brake",
     categoryName: "CNC / NC Press Brake",
-    image: shearingImg,
+    image: "Press_machine.png",
     description: "Cost-effective mechanical/hydraulic NC press brake designed for reliable everyday metal bending operations.",
     specifications: "Estun E21 NC Controller | Motorized Depth Adjustment"
   },
@@ -99,7 +99,7 @@ export const catalogData = [
     name: "Tandem & Heavy Tonnage Press Brake Machine",
     category: "press-brake",
     categoryName: "CNC / NC Press Brake",
-    image: shearingImg,
+    image: "Press_machine.png",
     description: "Dual-machine synchronized tandem press brake engineered for ultra-long poles, chassis, and heavy industrial beams.",
     specifications: "Combined Tonnage: Up to 1600T | Length: Up to 14000mm"
   },
@@ -108,7 +108,7 @@ export const catalogData = [
     name: "Shearing Machine",
     category: "shearing",
     categoryName: "Shearing Machine",
-    image: shearingImg,
+    image: "Shearing_machine.png",
     description: "High-speed hydraulic guillotine shearing machine built for clean, accurate, and repeatable metal sheet cuts.",
     specifications: "Thickness: 4mm - 30mm | Blade Gap Quick Adjustment"
   },
@@ -117,7 +117,7 @@ export const catalogData = [
     name: "Hydraulic Press",
     category: "hydraulic-press",
     categoryName: "Hydraulic Press",
-    image: plasmaImg,
+    image: "Hydraulic_machine.png",
     description: "Four-column industrial hydraulic press machine optimized for deep drawing, stamping, molding, and straightening.",
     specifications: "Capacity: 100T - 2000T | Adjustable Pressure"
   },
@@ -126,7 +126,7 @@ export const catalogData = [
     name: "Spares & Consumables",
     category: "spares",
     categoryName: "Spares & Consumables",
-    image: plasmaImg,
+    image: "Spare.png",
     description: "Genuine laser nozzles, ceramic rings, focus lenses, protection glasses, and plasma consumables.",
     specifications: "OEM Certified Replacement Parts"
   }
