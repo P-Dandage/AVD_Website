@@ -43,8 +43,8 @@ export default function QuoteModal({ isOpen, onClose }) {
     // ==========================================
     // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
     // ==========================================
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb4GvNAOatFUCvXVWsSch_hBKKVdFEKwbbaL2OWK9YOdXvk5_qxwUM-ciBLntuH6As2w/exec";
-
+   //pd URL // const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb4GvNAOatFUCvXVWsSch_hBKKVdFEKwbbaL2OWK9YOdXvk5_qxwUM-ciBLntuH6As2w/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCGal4DyFJkpKLg-WkzDLFZ9_I3sJlwejYfH1o4DgHo7oL5tLtfuj64wx1L4unUAsLTQ/exec";
     const payload = {
       formType: "Request a Quote Modal",
       name: formData.name,
