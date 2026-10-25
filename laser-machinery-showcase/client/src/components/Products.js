@@ -5,7 +5,7 @@ export const productsData = [
     id: 1,
     name: "CNC Fiber Laser Cutting Machine",
     description: "High-precision cutting machine for sheet metal processing with advanced fiber laser technology.",
-    image: "Laser_machine.png"
+    image: "Heavy_duty.png"
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const productsData = [
     id: 4,
     name: "CNC Press Brake",
     description: "High-speed hydraulic shearing machine built for clean, accurate, and repeatable metal cuts.",
-    image: "Press_machine.png"
+    image: "Cnc_press.png"
   },
   {
     id: 5,

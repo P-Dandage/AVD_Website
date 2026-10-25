@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import './Client.css';
 
+
 const ease = [0.22, 1, 0.36, 1];
 
 function Reveal({ children, delay = 0, y = 30, className, once = true }) {
@@ -22,18 +23,12 @@ function Reveal({ children, delay = 0, y = 30, className, once = true }) {
 
 export default function Client() {
   const clientList = [
-    { name: "ISRO (Indian Space Research Organisation)", sector: "Space & Aerospace", logoText: "ISRO" },
-    { name: "L&T Heavy Engineering", sector: "Infrastructure & Defense", logoText: "L&T" },
-    { name: "Tata Advanced Systems", sector: "Defense & Aerospace", logoText: "TATA" },
-    { name: "Bharat Forge", sector: "Forging & Automotive", logoText: "BHARAT FORGE" },
-    { name: "Mahindra & Mahindra", sector: "Automotive", logoText: "Mahindra" },
-    { name: "Godrej & Boyce", sector: "Industrial Manufacturing", logoText: "Godrej" },
-    { name: "Thermax Limited", sector: "Energy & Environment", logoText: "THERMAX" },
-    { name: "Kirloskar Brothers", sector: "Pumps & Valves", logoText: "KIRLOSKAR" },
-    { name: "BHEL (Bharat Heavy Electricals)", sector: "Power & Heavy Industry", logoText: "BHEL" },
-    { name: "Jindal Steel & Power", sector: "Steel & Metallurgy", logoText: "JINDAL" },
-    { name: "Tata Motors", sector: "Automobile & EV", logoText: "TATA MOTORS" },
-    { name: "Schindler Elevators", sector: "Vertical Transportation", logoText: "Schindler" }
+    { name: "Swapnil Electricals Private Limited Nashik", sector: "Control Panel and Solar System", logo:"Swapnil.png" },
+    { name: "Shreenath Engineering Nashik", sector: "Heavy Sheet Metal Fabricator", logo:"Shreenath.png" },
+    { name: "Sasa Enggetech Pune", sector: "Automobile", logo:"Sasa.png" },
+    { name: "MB Electrical Pune", sector: "Electrica Control Panel", logo:"" },
+    { name: "Saish Laser tech Pune", sector: "Laser Cutting Bending and Heavy Fabrication", logo:"" },
+    { name: "Unique Laser Pune", sector: "Job Work in Laser Cutting and Bending", logo:"" },
   ];
 
   return (
@@ -50,11 +45,11 @@ export default function Client() {
       {/* --- INTRO SECTION --- */}
       <section className="client-intro-section">
         <Reveal className="client-intro-container">
-          <span className="section-subtitle">Trusted Partnerships</span>
-          <h2>Driven by Trust, Built on Long-Term Relationships</h2>
+          <span className="section-subtitle">Our Few Esteemed Clients</span>
+          {/* <h2>Driven by Trust, Built on Long-Term Relationships</h2>
           <p>
             At AVD Machine Tools, our success is measured by the success and trust of our clients. From elite government aerospace sectors to major private manufacturing enterprises, our high-precision machinery and dedicated after-sales support empower nationwide industries to achieve peak operational excellence.
-          </p>
+          </p> */}
         </Reveal>
       </section>
 
@@ -65,7 +60,11 @@ export default function Client() {
             <Reveal key={index} delay={(index % 4) * 0.1}>
               <div className="client-card">
                 <div className="client-logo-box">
-                  <span className="client-logo-text">{client.logoText}</span>
+                  {client.logo ? (
+                    <img src={client.logo} alt={client.name} className="client-logo" style={{ width: '100%', height: '100%' }} />
+                  ) : (
+                    <span className="client-logo-text">{client.name}</span>
+                  )}
                 </div>
                 <div className="client-info">
                   <h3>{client.name}</h3>

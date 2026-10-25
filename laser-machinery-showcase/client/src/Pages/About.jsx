@@ -80,25 +80,24 @@ export default function About() {
           
           <Reveal className="clean-intro-header">
             <span className="red-subtitle">Company Profile</span>
-            <h2>Excellence in Sheet Metal Solutions & Engineering</h2>
+            <h2><span>World Class Machinery</span> For Sheet Metal Industry</h2>
           </Reveal>
           
           <Reveal className="clean-intro-body" delay={0.2}>
             <p className="lead-text">
-              AVD MACHINE TOOLS is built on a foundation of providing superior customer support and service for over 16 years.
+              AVD MACHINE TOOLS is built on a foundation of providing superior customer support and service for over years.
             </p>
             <p className="secondary-text">
-              We specialize in delivering cutting-edge solutions ranging from CNC Fiber Laser Cutting and Plasma Systems to Press Brakes. Our core philosophy centers on building value through trust, superior technical support, and user-friendly automated systems. With our expertise, go from idea to production faster and with less cost than ever before.
-            </p>
+We have been serving the country with world-class sheet metal machinery and solutions, delivering high quality and performance. The sectors we serve include automobiles, electrical panel manufacturers, heavy sheet metal fabricators, earth-moving equipment, and the defence industry, etc. We will continue to support the industry and the community to build a New India with quick after-sales and service support.            </p>
             
             <div className="clean-stats-row">
               <div className="stat-item">
-                <h3>800+</h3>
+                {/* <h3>800+</h3>
                 <span>Installations</span>
               </div>
               <div className="stat-item">
-                <h3>16+</h3>
-                <span>Years Exp.</span>
+                <h3>5+</h3>
+                <span>Years Exp.</span> */}
               </div>
               <div className="stat-item">
                 <h3>100%</h3>
@@ -157,7 +156,7 @@ export default function About() {
       </section>
 
       {/* 5. FOUNDER'S DESK (COMPACT & TOP ALIGNED) */}
-      <section className="founder-fade-section">
+      {/* <section className="founder-fade-section">
         <div className="founder-fade-container">
           
           <motion.div 
@@ -199,10 +198,10 @@ export default function About() {
           </motion.div>
 
         </div>
-      </section>
+      </section> */}
 
       {/* 6. CAPABILITIES */}
-      <section className="abt-section abt-soft">
+      {/* <section className="abt-section abt-soft">
         <div className="abt-container">
           <Reveal className="abt-head">
             <span className="red-subtitle">Capabilities</span>
@@ -222,7 +221,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 7. INDUSTRIES */}
       <section className="abt-section">

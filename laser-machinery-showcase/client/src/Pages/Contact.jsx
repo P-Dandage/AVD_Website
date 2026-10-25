@@ -115,13 +115,13 @@ export default function Contact() {
               </div>
             </Reveal>
 
-            <Reveal className="contact-detail-block" delay={0.2}>
+            {/* <Reveal className="contact-detail-block" delay={0.2}>
               <div className="contact-icon-box">🏭</div>
               <div>
                 <h3>Factory Address</h3>
                 <p>{siteConfig.factoryAddress}</p>
               </div>
-            </Reveal>
+            </Reveal> */}
 
             <Reveal className="contact-detail-block" delay={0.3}>
               <div className="contact-icon-box">📞</div>
@@ -141,7 +141,7 @@ export default function Contact() {
 
             <Reveal className="branches-tag-box" delay={0.5}>
               <strong>Our Branches:</strong>
-              <span>Pune </span>
+              <span >Main Branch: Pune <div> Other Branches: Mumbai ,Nashik , Nagpur , Aurangabad , Bangalore </div></span>
             </Reveal>
           </div>
 

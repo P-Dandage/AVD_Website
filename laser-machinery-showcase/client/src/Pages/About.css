@@ -49,11 +49,12 @@
   font-size: 0.85rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--black);
   letter-spacing: 2px;
   display: block;
   margin-bottom: 12px;
 }
+
 
 /* 2. COMPANY PROFILE */
 .clean-intro-section {
@@ -74,6 +75,9 @@
   line-height: 1.2;
   margin: 0;
   letter-spacing: -1px;
+}
+.clean-intro-header h2 span{
+  color: var(--red);
 }
 .clean-intro-body .lead-text {
   font-size: 1.2rem;
@@ -306,6 +310,10 @@
 }
 
 /* 7. INDUSTRIES PILLS */
+
+.abt-section .red-subtitle {
+  color: var(--red);
+}
 .industries-pill-container {
   display: flex;
   flex-wrap: wrap;

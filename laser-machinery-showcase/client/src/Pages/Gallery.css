@@ -1,0 +1,210 @@
+/* --- GALLERY PAGE STYLING --- */
+.gallery-page {
+  background-color: #ffffff;
+  color: #333333;
+  font-family: inherit;
+}
+
+/* Header Banner */
+.gallery-header-banner {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 50px 24px;
+  text-align: center;
+  color: #ffffff;
+  border-bottom: 1px solid #222;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(17,17,17,0.9), rgba(17,17,17,0.6));
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner-content h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-content h1 span {
+  color: #D31224;
+}
+
+.banner-content p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin: 0;
+}
+
+/* Intro Section */
+.gallery-intro-section {
+  padding: 40px 24px 40px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.gallery-intro-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #D31224;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gallery-intro-container h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #111111;
+  margin: 0 0 15px;
+}
+
+.gallery-intro-container p {
+  font-size: 1.05rem;
+  color: #666666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Video Section */
+.gallery-video-section {
+  padding: 40px 24px 100px;
+  background-color: #ffffff;
+}
+
+.gallery-video-container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background-color: #000;
+  border: 1px solid #eaeaea;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-info-box {
+  margin-top: 25px;
+  background-color: #fafafa;
+  border: 1px solid #eaeaea;
+  border-left: 4px solid #D31224;
+  padding: 25px;
+  border-radius: 8px;
+}
+
+.video-info-box h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111111;
+  margin: 0 0 8px;
+}
+
+.video-info-box p {
+  font-size: 0.98rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* CTA Section Reuse */
+.app-cta-section {
+  padding: 90px 24px;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  text-align: center;
+  color: #ffffff;
+}
+
+.app-cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.app-cta-content h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.app-cta-content p {
+  font-size: 1.05rem;
+  color: #cccccc;
+  margin-bottom: 30px;
+}
+
+.cta-buttons-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.app-cta-content .card-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.app-cta-content .solid-btn {
+  background-color: #D31224;
+  color: #ffffff;
+  border: 2px solid #D31224;
+}
+
+.app-cta-content .solid-btn:hover {
+  background-color: #b72025;
+  border-color: #b72025;
+  transform: scale(1.05);
+}
+
+.app-cta-content .outline-btn-light {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.app-cta-content .outline-btn-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .cta-buttons-group {
+    flex-direction: column;
+  }
+}

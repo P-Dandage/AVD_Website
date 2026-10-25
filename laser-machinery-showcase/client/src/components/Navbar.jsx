@@ -23,12 +23,16 @@ export default function Navbar() {
       name: "Fiber Laser Cutting Machine",
       category: "fiber-laser",
       subItems: [
-        "Industrial Pioneer Series",
-        "In-demand Innovation",
-        "Futuristic Laser Series",
-        "Professional Tube Cutting Machine",
-        "Dual-position Exchange Table"
+        "Single Table Economical  Fiber Laser Cutting Machine",
+        "Fiber Laser Cutting Machine with Autopilot changer",
+        "Heavy duity Laser Cutting Machine ",
+      
       ]
+    },
+     {
+      name: "CNC Laser Tube Cutting Machine",
+      category: "fiber-laser-tube",
+      subItems: []
     },
     {
       name: "CNC Plasma Cutting Machine",

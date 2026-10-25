@@ -125,7 +125,7 @@ export default function Home() {
           <span className="section-subtitle">Discover Our Company</span>
           <h2>Welcome to <span>AVD Machine Tools</span></h2>
           <p>
-            AVD MACHINE TOOLS is a premier provider of cutting-edge machinery for the sheet metal industry. We stand at the forefront of innovation, delivering solutions focused on Precision, Performance, and Productivity.
+            AVD MACHINE TOOLS is World Class Solution For Sheet Metal Machinary With Higth Performance and Accurancy 
           </p>
           <div className="about-features">
             <Reveal delay={0.1} y={15}><div className="feature-item">
