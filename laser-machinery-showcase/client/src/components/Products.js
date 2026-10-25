@@ -11,7 +11,7 @@ export const productsData = [
     id: 2,
     name: "CNC Plasma Cutting Machine",
     description: "Robust and reliable plasma cutting system designed for heavy-duty industrial applications.",
-    image: "Plasma_machine.png"
+    image: "Gantry.png"
   },
   {
     id: 3,
