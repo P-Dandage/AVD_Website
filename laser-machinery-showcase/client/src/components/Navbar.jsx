@@ -1,13 +1,11 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import QuoteModal from './QuoteModal';
 import './Navbar.css';
 import logo from '../assets/logo2.png';
 
-export default function Navbar() {
+export default function Navbar({ onOpenQuoteModal }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const location = useLocation();
 
   const getNavClass = (path) => {
@@ -155,7 +153,7 @@ export default function Navbar() {
 
           {/* Request A Quote Button Triggering Modal */}
           <div className="navbar-action">
-            <button className="quote-btn" onClick={() => setIsQuoteOpen(true)}>
+            <button className="quote-btn" onClick={() => onOpenQuoteModal()}>
               REQUEST A QUOTE
             </button>
           </div>
@@ -180,14 +178,12 @@ export default function Navbar() {
           <Link to="/gallery" className={getNavClass("/gallery")} onClick={() => setIsMobileMenuOpen(false)}>Gallery</Link>
           <Link to="/client" className={getNavClass("/client")} onClick={() => setIsMobileMenuOpen(false)}>Clients</Link>
           <Link to="/contact" className={getNavClass("/contact")} onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
-          <button className="quote-btn" onClick={() => { setIsMobileMenuOpen(false); setIsQuoteOpen(true); }}>
+          <button className="quote-btn" onClick={() => { setIsMobileMenuOpen(false); onOpenQuoteModal(); }}>
             REQUEST A QUOTE
           </button>
         </div>
       </nav>
 
-      {/* Quote Dialog Modal */}
-      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </>
   );
 }

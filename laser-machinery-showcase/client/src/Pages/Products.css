@@ -235,6 +235,7 @@
   flex: 1;
   background-color: #D31224;
   color: #ffffff;
+  border: none;
   text-align: center;
   padding: 11px 16px;
   font-weight: 600;
@@ -246,6 +247,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
   transition: background-color 0.25s ease;
 }
 

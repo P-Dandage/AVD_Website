@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import QuoteModal from './components/QuoteModal';
 import Footer from './components/Footer';
 import ToStrip from './components/ToStrip';
 import ScrollToTop from './components/ScrollToTop'; // Double check your import path!
@@ -15,6 +16,15 @@ import Client from './Pages/Client';
 import Contact from './Pages/Contact';
 
 export default function App() {
+  const [quoteModal, setQuoteModal] = useState({ isOpen: false, requirement: '' });
+
+  const openQuoteModal = (requirement = '') => {
+    setQuoteModal({ isOpen: true, requirement });
+  };
+
+  const closeQuoteModal = () => {
+    setQuoteModal({ isOpen: false, requirement: '' });
+  };
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 flex flex-col">
@@ -23,14 +33,14 @@ export default function App() {
 
       <ToStrip />
       <ScrollToTop /> {/* <-- Place it right here */}
-      <Navbar />
+      <Navbar onOpenQuoteModal={openQuoteModal} />
 
       <main className="flex-grow flex flex-col">
         <FloatingContact />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<Products onOpenQuoteModal={openQuoteModal} />} />
           <Route path="/application" element={<Application />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/client" element={<Client />} />
@@ -39,6 +49,11 @@ export default function App() {
       </main>
 
       <Footer />
+      <QuoteModal
+        isOpen={quoteModal.isOpen}
+        initialRequirement={quoteModal.requirement}
+        onClose={closeQuoteModal}
+      />
     </div>
   );
 }

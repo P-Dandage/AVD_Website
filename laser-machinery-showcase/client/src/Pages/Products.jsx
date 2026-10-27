@@ -22,7 +22,7 @@ function Reveal({ children, delay = 0, y = 30, className, once = true }) {
   );
 }
 
-export default function Products() {
+export default function Products({ onOpenQuoteModal }) {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const selectedCategory = searchParams.get('category');
@@ -196,12 +196,13 @@ export default function Products() {
                       >
                         View More
                       </button>
-                      <Link
-                        to={`/contact?inquiry=${encodeURIComponent(product.name)}`}
+                      <button
+                        type="button"
+                        onClick={() => onOpenQuoteModal(product.name)}
                         className="product-inquiry-btn"
                       >
                         Inquiry
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </article>

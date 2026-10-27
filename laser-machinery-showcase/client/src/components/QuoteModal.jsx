@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './QuoteModal.css';
 import logo from '../assets/logo2.png';
 
-export default function QuoteModal({ isOpen, onClose }) {
+export default function QuoteModal({ isOpen, onClose, initialRequirement = '' }) {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -25,10 +25,10 @@ export default function QuoteModal({ isOpen, onClose }) {
         email: '',
         city: '',
         phone: '',
-        requirement: ''
+        requirement: initialRequirement
       });
     }
-  }, [isOpen]);
+  }, [isOpen, initialRequirement]);
 
   if (!isOpen) return null;
 
@@ -43,8 +43,9 @@ export default function QuoteModal({ isOpen, onClose }) {
     // ==========================================
     // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
     // ==========================================
-   //pd URL // const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb4GvNAOatFUCvXVWsSch_hBKKVdFEKwbbaL2OWK9YOdXvk5_qxwUM-ciBLntuH6As2w/exec";
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCGal4DyFJkpKLg-WkzDLFZ9_I3sJlwejYfH1o4DgHo7oL5tLtfuj64wx1L4unUAsLTQ/exec";
+  //  pd URL 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb4GvNAOatFUCvXVWsSch_hBKKVdFEKwbbaL2OWK9YOdXvk5_qxwUM-ciBLntuH6As2w/exec";
+    // const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCGal4DyFJkpKLg-WkzDLFZ9_I3sJlwejYfH1o4DgHo7oL5tLtfuj64wx1L4unUAsLTQ/exec";
     const payload = {
       formType: "Request a Quote Modal",
       name: formData.name,
@@ -120,8 +121,8 @@ export default function QuoteModal({ isOpen, onClose }) {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label>Email Address *</label>
-                  <input type="email" name="email" required placeholder="rahul@apex.com" value={formData.email} onChange={handleChange} />
+                  <label>Phone Number *</label>
+                  <input type="tel" name="phone" required placeholder="+91 98765 43210" value={formData.phone} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>City *</label>
@@ -129,14 +130,17 @@ export default function QuoteModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="form-row">
+              <div className="form-row form-row-single">
                 <div className="form-group">
-                  <label>Phone Number *</label>
-                  <input type="tel" name="phone" required placeholder="+91 98765 43210" value={formData.phone} onChange={handleChange} />
+                  <label>Email Address *</label>
+                  <input type="email" name="email" required placeholder="rahul@apex.com" value={formData.email} onChange={handleChange} />
                 </div>
+              </div>
+
+              <div className="form-row form-row-single">
                 <div className="form-group">
                   <label>Requirement *</label>
-                  <input type="text" name="requirement" required placeholder="Machine model / details" value={formData.requirement} onChange={handleChange} />
+                  <textarea name="requirement" required rows="3" placeholder="Describe the machine or service you need" value={formData.requirement} onChange={handleChange} />
                 </div>
               </div>
 

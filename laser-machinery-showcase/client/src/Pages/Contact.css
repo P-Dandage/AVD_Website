@@ -195,6 +195,15 @@
   margin-bottom: 3px;
 }
 
+.branches-tag-box .branch-locations strong {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.branches-tag-box .branch-main {
+  white-space: nowrap;
+}
+
 /* ==========================================
    RIGHT CONTACT FORM
 ========================================== */

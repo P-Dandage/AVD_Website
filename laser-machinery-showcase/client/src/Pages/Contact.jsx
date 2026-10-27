@@ -55,8 +55,9 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    //Pd url// const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb4GvNAOatFUCvXVWsSch_hBKKVdFEKwbbaL2OWK9YOdXvk5_qxwUM-ciBLntuH6As2w/exec";
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCGal4DyFJkpKLg-WkzDLFZ9_I3sJlwejYfH1o4DgHo7oL5tLtfuj64wx1L4unUAsLTQ/exec";
+    //Pd url
+     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb4GvNAOatFUCvXVWsSch_hBKKVdFEKwbbaL2OWK9YOdXvk5_qxwUM-ciBLntuH6As2w/exec";
+    // const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCGal4DyFJkpKLg-WkzDLFZ9_I3sJlwejYfH1o4DgHo7oL5tLtfuj64wx1L4unUAsLTQ/exec";
 
     const payload = {
       formType: "Contact Us Page",
@@ -142,7 +143,10 @@ export default function Contact() {
 
             <Reveal className="branches-tag-box" delay={0.5}>
               <strong>Our Branches:</strong>
-              <span >Main Branch: Pune <div> Other Branches: Mumbai ,Nashik , Nagpur , Aurangabad , Bangalore </div></span>
+              <div className="branch-locations">
+                <div className="branch-main"><strong>Main Branch:</strong> Pune</div>
+                <div><strong>Other Branches:</strong> Mumbai, Nashik, Nagpur, Aurangabad, Bangalore</div>
+              </div>
             </Reveal>
           </div>
 
